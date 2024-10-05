@@ -39,5 +39,11 @@
         /// Need for Speed: Undercover
         /// </summary>
         Undercover = 6,
+        
+        
+        /// <summary>
+        /// Need for Speed: World
+        /// </summary>
+        World = 7,
     }
 }

@@ -133,6 +133,11 @@
             Need for Speed: Undercover
             </summary>
         </member>
+        <member name="F:Nikki.Core.GameINT.World">
+            <summary>
+            Need for Speed: World
+            </summary>
+        </member>
         <member name="T:Nikki.Core.Loader">
             <summary>
             Static manager to load keys and various files.
