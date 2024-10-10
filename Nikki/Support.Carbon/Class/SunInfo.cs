@@ -10,6 +10,7 @@ using Nikki.Support.Shared.Parts.SunParts;
 using CoreExtensions.IO;
 using CoreExtensions.Conversions;
 
+using System;
 
 
 namespace Nikki.Support.Carbon.Class
@@ -254,6 +255,25 @@ namespace Nikki.Support.Carbon.Class
 			return $"Collection Name: {this.CollectionName} | " +
 				   $"BinKey: {this.BinKey:X8} | Game: {this.GameSTR}";
 		}
+
+        public void Export(SunInfo sunInfo, string filePath, bool serialized)
+        {
+            using var bw = new BinaryWriter(File.Open(filePath, FileMode.Create));
+    
+            // Check if serialized
+            if (serialized)
+            {
+                // Serialize the SunInfo instance
+                sunInfo.Serialize(bw);
+            }
+            else
+            {
+                // Non-serialized export (direct export of properties)
+                sunInfo.Assemble(bw);
+            }
+    
+            Console.Write($"SunInfo '{sunInfo.CollectionName}' successfully exported to {filePath}.", "Info");
+        }
 
 		#endregion
 
