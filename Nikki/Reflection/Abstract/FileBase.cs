@@ -17,7 +17,7 @@ namespace Nikki.Reflection.Abstract
         /// <summary>
         /// Game to which the class belongs to.
         /// </summary>
-        public abstract GameINT GameINT { get; }
+        public abstract GameINT GameINT { get; set; }
 
         /// <summary>
         /// Game string to which the class belongs to.

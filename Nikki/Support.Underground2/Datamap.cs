@@ -19,7 +19,7 @@ namespace Nikki.Support.Underground2
 		/// <summary>
 		/// Game to which the class belongs to.
 		/// </summary>
-		public override GameINT GameINT => GameINT.Underground2;
+		public override GameINT GameINT { get; set; } = GameINT.Underground2;
 
 		/// <summary>
 		/// Game string to which the class belongs to.

@@ -19,7 +19,7 @@ namespace Nikki.Support.Prostreet
 		/// <summary>
 		/// Game to which the class belongs to.
 		/// </summary>
-		public override GameINT GameINT => GameINT.Prostreet;
+		public override GameINT GameINT  { get; set; } = GameINT.Prostreet;
 
 		/// <summary>
 		/// Game string to which the class belongs to.

@@ -19,7 +19,7 @@ namespace Nikki.Support.MostWanted
 		/// <summary>
 		/// Game to which the class belongs to.
 		/// </summary>
-		public override GameINT GameINT => GameINT.MostWanted;
+		public override GameINT GameINT  { get; set; } = GameINT.MostWanted;
 
 		/// <summary>
 		/// Game string to which the class belongs to.

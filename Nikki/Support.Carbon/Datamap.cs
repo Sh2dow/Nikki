@@ -19,9 +19,9 @@ namespace Nikki.Support.Carbon
 		/// <summary>
 		/// Game to which the class belongs to.
 		/// </summary>
-		public override GameINT GameINT => GameINT.Carbon;
+		public override GameINT GameINT { get; set; } = GameINT.Carbon;
 
-		/// <summary>
+        /// <summary>
 		/// Game string to which the class belongs to.
 		/// </summary>
 		public override string GameSTR => this.GameINT.ToString();
