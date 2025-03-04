@@ -19,7 +19,7 @@ namespace Nikki.Support.MostWanted
 		/// <summary>
 		/// Game to which the class belongs to.
 		/// </summary>
-		public override GameINT GameINT  { get; set; } = GameINT.MostWanted;
+		public override GameINT GameINT { get; set; } = GameINT.MostWanted;
 
 		/// <summary>
 		/// Game string to which the class belongs to.
@@ -31,10 +31,13 @@ namespace Nikki.Support.MostWanted
 		/// </summary>
 		public Datamap() : base()
 		{
+			this.Managers.Add(new AcidEffectManager(this));
+			this.Managers.Add(new AcidEmitterManager(this));
 			this.Managers.Add(new CarTypeInfoManager(this));
 			this.Managers.Add(new CollisionManager(this));
 			this.Managers.Add(new DBModelPartManager(this));
 			this.Managers.Add(new FNGroupManager(this));
+			this.Managers.Add(new GCareerManager(this));
 			this.Managers.Add(new MaterialManager(this));
 			this.Managers.Add(new PresetRideManager(this));
 			this.Managers.Add(new SlotOverrideManager(this));
@@ -43,6 +46,30 @@ namespace Nikki.Support.MostWanted
 			this.Managers.Add(new SunInfoManager(this));
 			this.Managers.Add(new TPKBlockManager(this));
 			this.Managers.Add(new TrackManager(this));
+		}
+
+		/// <summary>
+		/// <see cref="Manager{T}"/> that manages <see cref="AcidEffect"/>.
+		/// </summary>
+		public AcidEffectManager AcidEffects
+		{
+			get
+			{
+				var manager = this.GetManager(typeof(AcidEffectManager));
+				return manager == null ? null : manager as AcidEffectManager;
+			}
+		}
+
+		/// <summary>
+		/// <see cref="Manager{T}"/> that manages <see cref="AcidEmitter"/>.
+		/// </summary>
+		public AcidEmitterManager AcidEmitters
+		{
+			get
+			{
+				var manager = this.GetManager(typeof(AcidEmitterManager));
+				return manager == null ? null : manager as AcidEmitterManager;
+			}
 		}
 
 		/// <summary>
@@ -90,6 +117,18 @@ namespace Nikki.Support.MostWanted
 			{
 				var manager = this.GetManager(typeof(FNGroupManager));
 				return manager == null ? null : manager as FNGroupManager;
+			}
+		}
+
+		/// <summary>
+		/// <see cref="Manager{T}"/> that manages <see cref="GCareer"/>.
+		/// </summary>
+		public GCareerManager GCareers
+		{
+			get
+			{
+				var manager = this.GetManager(typeof(GCareerManager));
+				return manager == null ? null : manager as GCareerManager;
 			}
 		}
 

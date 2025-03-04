@@ -248,8 +248,10 @@ namespace Nikki.Support.Shared.Class
         /// <param name="by_name">True if sort by name; false is sort by hash.</param>
         public void SortTexturesByType(bool by_name)
         {
-            if (!by_name) this.Textures.Sort((x, y) => x.BinKey.CompareTo(y.BinKey));
-            else this.Textures.Sort((x, y) => x.CollectionName.CompareTo(y.CollectionName));
+            if (!by_name) 
+                this.Textures.Sort((x, y) => x.BinKey.CompareTo(y.BinKey));
+            else 
+                this.Textures.Sort((x, y) => x.CollectionName.CompareTo(y.CollectionName));
         }
 
         /// <summary>

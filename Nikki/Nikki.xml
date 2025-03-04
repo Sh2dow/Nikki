@@ -692,6 +692,28 @@
             </summary>
             <param name="cname">CollectionName to check.</param>
         </member>
+        <member name="M:Nikki.Core.Manager`1.ConvertCollectionToGame(`0,Nikki.Core.GameINT,Nikki.Core.GameINT)">
+            <summary>
+            Attempts to convert a collection from one game format to another.
+            </summary>
+            <param name="collection">The collection to be converted.</param>
+            <param name="sourceGame">The original game identifier.</param>
+            <param name="targetGame">The target game identifier.</param>
+        </member>
+        <member name="M:Nikki.Core.Manager`1.AdjustForTargetGame(System.String)">
+            <summary>
+            Adjusts a property value for the target game.
+            </summary>
+            <param name="value">The original value.</param>
+            <returns>The adjusted value.</returns>
+        </member>
+        <member name="M:Nikki.Core.Manager`1.AdjustForSourceGame(System.String)">
+            <summary>
+            Adjusts a property value for the source game.
+            </summary>
+            <param name="value">The original value.</param>
+            <returns>The adjusted value.</returns>
+        </member>
         <member name="T:Nikki.Core.Map">
             <summary>
             Represents all important maps of the library.
@@ -17105,6 +17127,520 @@
             Deserializes byte array into an instance by loading data from the file provided.
             </summary>
         </member>
+        <member name="T:Nikki.Support.MostWanted.Class.AcidEffect">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/> is a collection of vectors and attributes related to acids and xenons.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Class.AcidEffect.MaxCNameLength">
+            <summary>
+            Maximum length of the CollectionName.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Class.AcidEffect.CNameOffsetAt">
+            <summary>
+            Offset of the CollectionName in the data.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Class.AcidEffect.BaseClassSize">
+            <summary>
+            Base size of a unit collection.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.Localizer">
+            <summary>
+            Constant value used in the header.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.Manager">
+            <summary>
+            Manager to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.EmitterName">
+            <summary>
+            Emitter name of the <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.State">
+            <summary>
+            State of this <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.SectionNumber">
+            <summary>
+            Section number of this <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.SceneryBarrierGroup">
+            <summary>
+            Scenery barrier group to which this <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/> belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEffect.Transform">
+            <summary>
+            LocalWorld <see cref="T:Nikki.Support.Shared.Parts.GenParts.Matrix"/> of this <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEffect.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEffect.#ctor(System.String,Nikki.Support.MostWanted.Framework.AcidEffectManager)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="manager"><see cref="T:Nikki.Support.MostWanted.Framework.AcidEffectManager"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEffect.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Framework.AcidEffectManager)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="manager"><see cref="T:Nikki.Support.MostWanted.Framework.AcidEffectManager"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEffect.Assemble(System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEffect.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEffect.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEffect.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEffect.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEffect.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Class.AcidEmitter">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/> is a collection of vectors and attributes related to emitters.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Class.AcidEmitter.MaxCNameLength">
+            <summary>
+            Maximum length of the CollectionName.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Class.AcidEmitter.CNameOffsetAt">
+            <summary>
+            Offset of the CollectionName in the data.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Class.AcidEmitter.BaseClassSize">
+            <summary>
+            Base size of a unit collection.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.Localizer">
+            <summary>
+            Constant value used in the header.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.Manager">
+            <summary>
+            Manager to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.TextureName">
+            <summary>
+            Special effect name of this <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.GroupName">
+            <summary>
+            Emitter name of this <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.SpreadAsDisc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.ContactSheetW">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.ContactSheetH">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.AnimFPS">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.RandomStartFrame">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.RandomRotationDirection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.MotionLive">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.Padding">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.OnCycle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.OnCycleVariance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.OffCycle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.OffCycleVariance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.NumParticles">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.NumParticlesVariance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.Life">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.LifeVariance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.Speed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.SpeedVariance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.InitialAngleRange">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.SpreadAngle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.MotionInherit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.MotionInheritVariance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.CarPosition">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.EmitterID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.VolumeCenterX">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.VolumeCenterY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.VolumeCenterZ">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.VolumeCenterW">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.VolumeExtentX">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.VolumeExtentY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.VolumeExtentZ">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.VolumeExtentW">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.FarClip">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.Gravity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.Drag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.MaxPixelSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.KeyPosition1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.KeyPosition2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.KeyPosition3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.KeyPosition4">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.SizeX">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.SizeY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.SizeZ">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.SizeW">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.RelativeAngleX">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.RelativeAngleY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.RelativeAngleZ">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.RelativeAngleW">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.ColorMatrix">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.ColorBasis">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.AcidEmitter.ExtraBasis">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEmitter.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEmitter.#ctor(System.String,Nikki.Support.MostWanted.Framework.AcidEmitterManager)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="manager"><see cref="T:Nikki.Support.MostWanted.Framework.AcidEmitterManager"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEmitter.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Framework.AcidEmitterManager)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="manager"><see cref="T:Nikki.Support.MostWanted.Framework.AcidEmitterManager"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEmitter.Assemble(System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEmitter.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEmitter.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEmitter.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEmitter.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.AcidEmitter.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
         <member name="T:Nikki.Support.MostWanted.Class.CarTypeInfo">
             <summary>
             <see cref="T:Nikki.Support.MostWanted.Class.CarTypeInfo"/> is a collection of settings related to a car's basic information.
@@ -17544,6 +18080,270 @@
             Deserializes byte array into an instance by loading data from the file provided.
             </summary>
             <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Class.GCareer">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> is a collection of gameplay classes.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.Manager">
+            <summary>
+            Manager to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.Watermark">
+            <summary>
+            Watermark written during assembly.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.BankTriggers">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GCareerBrands">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GCareerRaces">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GCareerStages">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GCarUnlocks">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GShowcases">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.PartPerformances">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.PartUnlockables">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.PerfSliderTunings">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.SMSMessages">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.Sponsors">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.WorldChallenges">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.WorldShops">
+            <summary>
+            <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.BankTriggerCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GCareerBrandCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GCareerRaceCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GCareerStageCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GCarUnlockCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.GShowcaseCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.PartPerformanceCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.PartUnlockableCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.PerfSliderTuningCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.SMSMessageCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.SponsorCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.WorldChallengeCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.WorldShopCount">
+            <summary>
+            Total count of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/> in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.AllCollections">
+            <summary>
+            Represents array of <see cref="T:System.Collections.IList"/> of <see cref="T:Nikki.Reflection.Abstract.Collectable"/> collections.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Class.GCareer.AllRootNames">
+            <summary>
+            Represents array of all root names in this <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.#ctor(System.String,Nikki.Support.MostWanted.Framework.GCareerManager)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="manager"><see cref="T:Nikki.Support.MostWanted.Framework.GCareerManager"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Framework.GCareerManager)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="manager"><see cref="T:Nikki.Support.MostWanted.Framework.GCareerManager"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.Assemble(System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Class.TPKBlock"/> with.</param>
+            <returns>Byte array of the tpk block.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> array into separate properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.GetRoot(System.String)">
+            <summary>
+            Returns an <see cref="T:System.Collections.IList"/> root with name specified.
+            </summary>
+            <param name="root">Name of a root to get.</param>
+            <returns>Root with name specified as an <see cref="T:System.Collections.IList"/>.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.GetCollection(System.String,System.String)">
+            <summary>
+            Gets collection of with CollectionName specified from a root provided.
+            </summary>
+            <param name="cname">CollectionName of a collection to get.</param>
+            <param name="root">Root to which collection belongs to.</param>
+            <returns>Collection, if exists; null otherwise.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.AddCollection(System.String,System.String)">
+            <summary>
+            Adds a unit collection at a root provided with CollectionName specified.
+            </summary>
+            <param name="cname">CollectionName of a new collection.</param>
+            <param name="root">Root to which collection should belong to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.RemoveCollection(System.String,System.String)">
+            <summary>
+            Removes collection with CollectionName specified at the root provided.
+            </summary>
+            <param name="cname">CollectionName of a collection to remove.</param>
+            <param name="root">Root to which collection belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.CloneCollection(System.String,System.String,System.String)">
+            <summary>
+            Clones collection with CollectionName specified at the root provided.
+            </summary>
+            <param name="newname">CollectionName of a new cloned collection.</param>
+            <param name="copyname">CollectionName of a collection to clone.</param>
+            <param name="root">Root to which collection belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Class.TPKBlock"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Class.GCareer.Synchronize(Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Synchronizes all parts of this instance with another instance passed.
+            </summary>
+            <param name="other"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to synchronize with.</param>
         </member>
         <member name="T:Nikki.Support.MostWanted.Class.Material">
             <summary>
@@ -19419,6 +20219,16 @@
             Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Datamap"/>.
             </summary>
         </member>
+        <member name="P:Nikki.Support.MostWanted.Datamap.AcidEffects">
+            <summary>
+            <see cref="T:Nikki.Core.Manager`1"/> that manages <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Datamap.AcidEmitters">
+            <summary>
+            <see cref="T:Nikki.Core.Manager`1"/> that manages <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/>.
+            </summary>
+        </member>
         <member name="P:Nikki.Support.MostWanted.Datamap.CarTypeInfos">
             <summary>
             <see cref="T:Nikki.Core.Manager`1"/> that manages <see cref="T:Nikki.Support.MostWanted.Class.CarTypeInfo"/>.
@@ -19437,6 +20247,11 @@
         <member name="P:Nikki.Support.MostWanted.Datamap.FNGroups">
             <summary>
             <see cref="T:Nikki.Core.Manager`1"/> that manages <see cref="T:Nikki.Support.MostWanted.Class.FNGroup"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Datamap.GCareers">
+            <summary>
+            <see cref="T:Nikki.Core.Manager`1"/> that manages <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/>.
             </summary>
         </member>
         <member name="P:Nikki.Support.MostWanted.Datamap.Materials">
@@ -19521,6 +20336,172 @@
             Gets information about <see cref="T:Nikki.Support.MostWanted.Datamap"/> database.
             </summary>
             <returns>Info about this database as a string value.</returns>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Framework.AcidEffectManager">
+            <summary>
+            A <see cref="T:Nikki.Core.Manager`1"/> for <see cref="T:Nikki.Support.MostWanted.Class.AcidEffect"/> collections.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEffectManager.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEffectManager.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEffectManager.Name">
+            <summary>
+            Name of this <see cref="T:Nikki.Support.MostWanted.Framework.AcidEffectManager"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEffectManager.AllowsNoSerialization">
+            <summary>
+            If true, manager can export and import non-serialized collection; otherwise, false.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEffectManager.IsReadOnly">
+            <summary>
+            True if this <see cref="T:Nikki.Core.Manager`1"/> is read-only; otherwise, false.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEffectManager.Alignment">
+            <summary>
+            Indicates required alighment when this <see cref="T:Nikki.Support.MostWanted.Framework.AcidEffectManager"/> is being serialized.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEffectManager.CollectionType">
+            <summary>
+            Gets a collection and unit element type in this <see cref="T:Nikki.Support.MostWanted.Framework.AcidEffectManager"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEffectManager.#ctor(Nikki.Support.MostWanted.Datamap)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Framework.AcidEffectManager"/>.
+            </summary>
+            <param name="db"><see cref="T:Nikki.Support.MostWanted.Datamap"/> to which this manager belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEffectManager.Assemble(System.IO.BinaryWriter,System.String)">
+            <summary>
+            Assembles collection data into byte buffers.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+            <param name="mark">Watermark to put in the padding blocks.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEffectManager.Disassemble(System.IO.BinaryReader,Nikki.Core.Block)">
+            <summary>
+            Disassembles data into separate collections in this <see cref="T:Nikki.Support.MostWanted.Framework.AcidEffectManager"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="block"><see cref="T:Nikki.Core.Block"/> with offsets.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEffectManager.CreationCheck(System.String)">
+            <summary>
+            Checks whether CollectionName provided allows creation of a new collection.
+            </summary>
+            <param name="cname">CollectionName to check.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEffectManager.Export(System.String,System.IO.BinaryWriter,System.Boolean)">
+            <summary>
+            Exports collection with CollectionName specified to a filename provided.
+            </summary>
+            <param name="cname">CollectionName of a collection to export.</param>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+            <param name="serialized">True if collection exported should be serialized; 
+            false otherwise.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEffectManager.Import(Nikki.Reflection.Enum.SerializeType,System.IO.BinaryReader)">
+            <summary>
+            Imports collection from file provided and attempts to add it to the end of 
+            this <see cref="T:Nikki.Core.Manager`1"/> in case it does not exist.
+            </summary>
+            <param name="type">Type of serialization of a collection.</param>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Framework.AcidEmitterManager">
+            <summary>
+            A <see cref="T:Nikki.Core.Manager`1"/> for <see cref="T:Nikki.Support.MostWanted.Class.AcidEmitter"/> collections.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEmitterManager.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEmitterManager.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEmitterManager.Name">
+            <summary>
+            Name of this <see cref="T:Nikki.Support.MostWanted.Framework.AcidEmitterManager"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEmitterManager.AllowsNoSerialization">
+            <summary>
+            If true, manager can export and import non-serialized collection; otherwise, false.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEmitterManager.IsReadOnly">
+            <summary>
+            True if this <see cref="T:Nikki.Core.Manager`1"/> is read-only; otherwise, false.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEmitterManager.Alignment">
+            <summary>
+            Indicates required alighment when this <see cref="T:Nikki.Support.MostWanted.Framework.AcidEmitterManager"/> is being serialized.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.AcidEmitterManager.CollectionType">
+            <summary>
+            Gets a collection and unit element type in this <see cref="T:Nikki.Support.MostWanted.Framework.AcidEmitterManager"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEmitterManager.#ctor(Nikki.Support.MostWanted.Datamap)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Framework.AcidEmitterManager"/>.
+            </summary>
+            <param name="db"><see cref="T:Nikki.Support.MostWanted.Datamap"/> to which this manager belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEmitterManager.Assemble(System.IO.BinaryWriter,System.String)">
+            <summary>
+            Assembles collection data into byte buffers.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+            <param name="mark">Watermark to put in the padding blocks.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEmitterManager.Disassemble(System.IO.BinaryReader,Nikki.Core.Block)">
+            <summary>
+            Disassembles data into separate collections in this <see cref="T:Nikki.Support.MostWanted.Framework.AcidEmitterManager"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="block"><see cref="T:Nikki.Core.Block"/> with offsets.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEmitterManager.CreationCheck(System.String)">
+            <summary>
+            Checks whether CollectionName provided allows creation of a new collection.
+            </summary>
+            <param name="cname">CollectionName to check.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEmitterManager.Export(System.String,System.IO.BinaryWriter,System.Boolean)">
+            <summary>
+            Exports collection with CollectionName specified to a filename provided.
+            </summary>
+            <param name="cname">CollectionName of a collection to export.</param>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+            <param name="serialized">True if collection exported should be serialized; 
+            false otherwise.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.AcidEmitterManager.Import(Nikki.Reflection.Enum.SerializeType,System.IO.BinaryReader)">
+            <summary>
+            Imports collection from file provided and attempts to add it to the end of 
+            this <see cref="T:Nikki.Core.Manager`1"/> in case it does not exist.
+            </summary>
+            <param name="type">Type of serialization of a collection.</param>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
         </member>
         <member name="T:Nikki.Support.MostWanted.Framework.CarTypeInfoManager">
             <summary>
@@ -19863,6 +20844,89 @@
             false otherwise.</param>
         </member>
         <member name="M:Nikki.Support.MostWanted.Framework.FNGroupManager.Import(Nikki.Reflection.Enum.SerializeType,System.IO.BinaryReader)">
+            <summary>
+            Imports collection from file provided and attempts to add it to the end of 
+            this <see cref="T:Nikki.Core.Manager`1"/> in case it does not exist.
+            </summary>
+            <param name="type">Type of serialization of a collection.</param>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Framework.GCareerManager">
+            <summary>
+            A <see cref="T:Nikki.Core.Manager`1"/> for <see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> collections.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.GCareerManager.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.GCareerManager.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.GCareerManager.Name">
+            <summary>
+            Name of this <see cref="T:Nikki.Support.MostWanted.Framework.GCareerManager"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.GCareerManager.AllowsNoSerialization">
+            <summary>
+            If true, manager can export and import non-serialized collection; otherwise, false.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.GCareerManager.IsReadOnly">
+            <summary>
+            True if this <see cref="T:Nikki.Core.Manager`1"/> is read-only; otherwise, false.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.GCareerManager.Alignment">
+            <summary>
+            Indicates required alighment when this <see cref="T:Nikki.Support.MostWanted.Framework.GCareerManager"/> is being serialized.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Framework.GCareerManager.CollectionType">
+            <summary>
+            Gets a collection and unit element type in this <see cref="T:Nikki.Support.MostWanted.Framework.GCareerManager"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.GCareerManager.#ctor(Nikki.Support.MostWanted.Datamap)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Framework.GCareerManager"/>.
+            </summary>
+            <param name="db"><see cref="T:Nikki.Support.MostWanted.Datamap"/> to which this manager belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.GCareerManager.Assemble(System.IO.BinaryWriter,System.String)">
+            <summary>
+            Assembles collection data into byte buffers.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+            <param name="mark">Watermark to put in the padding blocks.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.GCareerManager.Disassemble(System.IO.BinaryReader,Nikki.Core.Block)">
+            <summary>
+            Disassembles data into separate collections in this <see cref="T:Nikki.Support.MostWanted.Framework.GCareerManager"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="block"><see cref="T:Nikki.Core.Block"/> with offsets.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.GCareerManager.CreationCheck(System.String)">
+            <summary>
+            Checks whether CollectionName provided allows creation of a new collection.
+            </summary>
+            <param name="cname">CollectionName to check.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.GCareerManager.Export(System.String,System.IO.BinaryWriter,System.Boolean)">
+            <summary>
+            Exports collection with CollectionName specified to a filename provided.
+            </summary>
+            <param name="cname">CollectionName of a collection to export.</param>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+            <param name="serialized">True if collection exported should be serialized; 
+            false otherwise.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Framework.GCareerManager.Import(Nikki.Reflection.Enum.SerializeType,System.IO.BinaryReader)">
             <summary>
             Imports collection from file provided and attempts to add it to the end of 
             this <see cref="T:Nikki.Core.Manager`1"/> in case it does not exist.
@@ -20534,6 +21598,2639 @@
             <param name="type">Type of serialization of a collection.</param>
             <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
         </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.BankTrigger">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> is a collection of settings related to cash zone triggers.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.CashValue">
+            <summary>
+            Cash value that player gets when collecting the trigger.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.InitiallyUnlocked">
+            <summary>
+            True if initially unlocked; false otherwise.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.BankIndex">
+            <summary>
+            Index of the trigger.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.BankTrigger.RequiredStagesCompleted">
+            <summary>
+            Requires stages completed in order to be unlocked.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.BankTrigger.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.BankTrigger.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.BankTrigger.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.BankTrigger.Assemble(System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.BankTrigger.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.BankTrigger.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.BankTrigger.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.BankTrigger.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.BankTrigger.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/> is a collection of settings related to sponsor brands.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerBrand.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerBrand.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerBrand.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerBrand.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerBrand.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerBrand.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerBrand.IngameBrandName">
+            <summary>
+            In-Game name of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerBrand.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerBrand.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerBrand.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerBrand.Assemble(System.IO.BinaryWriter,System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/> with.</param>
+            <param name="strw"><see cref="T:System.IO.BinaryWriter"/> to write strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerBrand.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerBrand.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerBrand.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerBrand.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerBrand.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.GCareerRace">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> is a collection of settings related to career races and events.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventBehaviorType">
+            <summary>
+            Enum of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> event behavior types.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventBehaviorType.Circuit">
+            <summary>
+            Circuit event.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventBehaviorType.Sprint">
+            <summary>
+            Sprint event.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventBehaviorType.StreetX">
+            <summary>
+            StreetX event.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventBehaviorType.OpenWorld">
+            <summary>
+            OpenWorld (FreeRoam) event.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventBehaviorType.Drag">
+            <summary>
+            Drag event.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventBehaviorType.Drift">
+            <summary>
+            Drift event.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventIconType">
+            <summary>
+            Enum of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> event icon types.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventIconType.NONE">
+            <summary>
+            No icon.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventIconType.SPONSOR">
+            <summary>
+            Sponsor icon.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventIconType.URL">
+            <summary>
+            URL icon.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventIconType.REGULAR">
+            <summary>
+            Regular icon.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.GCareerRace.UnlockCondition">
+            <summary>
+            Enum of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> event unlock conditions.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.UnlockCondition.SpecificRaceWon">
+            <summary>
+            Event requires specific race won.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.UnlockCondition.AtStageStart">
+            <summary>
+            Event unlocks at the beginning of the stage to which it belongs to.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.UnlockCondition.UnknownType">
+            <summary>
+            Event requires specific sponsor index chosen.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.UnlockCondition.ReqRegRacesWon">
+            <summary>
+            Event requires specific amount of regular races won.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GCareerRace.UnlockCondition.ReqVarRacesWon">
+            <summary>
+            Event requires specific amount of URL, sponsor, and regular won.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventTrigger">
+            <summary>
+            Engage trigger of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.UnlockMethod">
+            <summary>
+            Unlock method.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.IsSUVRace">
+            <summary>
+            True if the race is an SUV race; false otherwise.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.UnusedValue">
+            <summary>
+            Unused true-false value.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventBehavior">
+            <summary>
+            Event type.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.Unknown0x10">
+            <summary>
+            Unknown value at offset 0x10.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.ReqSpecRaceWon">
+            <summary>
+            Required race completed in order to unlock this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.ReqSponRacesWon">
+            <summary>
+            Required number of sponsor races won to unlock this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.ReqRegRacesWon">
+            <summary>
+            Required number of regular races won to unlock this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.ReqURLRacesWon">
+            <summary>
+            Required number of URL races won to unlock this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.STAGE1">
+            <summary>
+            Track number for stage 1.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.STAGE2">
+            <summary>
+            Track number for stage 2.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.STAGE3">
+            <summary>
+            Track number for stage 3.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.STAGE4">
+            <summary>
+            Track number for stage 4.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.EarnableRespect">
+            <summary>
+            Respect being earned from winning the race.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.PlayerCarType">
+            <summary>
+            Preset Ride that player uses in this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.CashValue">
+            <summary>
+            Cash amount that player gets for winning this race.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.EventIcon">
+            <summary>
+            Event icon type of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.IsDriveToGPS">
+            <summary>
+            True if the race is a GPS race; false otherwise.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.TrafficDensity">
+            <summary>
+            Difficulty level of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>;
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.BelongsToStage">
+            <summary>
+            Stage number to which this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.NumOpponents">
+            <summary>
+            Number of opponents in this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.UnknownDragValue">
+            <summary>
+            Unknown drag value.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.NumStages">
+            <summary>
+            Number of track stages in this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.IsHiddenEvent">
+            <summary>
+            True if this event is hidden on the map; false otherwise.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.IntroMovie">
+            <summary>
+            Movie shown pre-race.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.OutroMovie">
+            <summary>
+            Movie shown post-race.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.NumMapItems">
+            <summary>
+            Number of map items during the race flow.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.Unknown0x3A">
+            <summary>
+            Unknown value at offset 0x3A.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.Unknown0x3B">
+            <summary>
+            Unknown value at offset 0x3B.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.GPSDestination">
+            <summary>
+            GPS destination trigger if the race is a GPS event.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.OPPONENT1">
+            <summary>
+            Opponent 1 settings.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.OPPONENT2">
+            <summary>
+            Opponent 2 settings.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.OPPONENT3">
+            <summary>
+            Opponent 3 settings.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.OPPONENT4">
+            <summary>
+            Opponent 4 settings.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerRace.OPPONENT5">
+            <summary>
+            Opponent 5 settings.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.#ctor(System.IO.BinaryReader,System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="strr"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.Assemble(System.IO.BinaryWriter,System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> with.</param>
+            <param name="strw"><see cref="T:System.IO.BinaryWriter"/> to write strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.Disassemble(System.IO.BinaryReader,System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> with.</param>
+            <param name="strr"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.DriftTypeIfDriftRace">
+            <summary>
+            Drift type of the race, if it is a drift event.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerRace.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.GCareerStage">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/> is a collection of settings related to career stages.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.OutrunCashValue">
+            <summary>
+            Cash value given to the player for winning an outrun event.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.LastStageEvent">
+            <summary>
+            Last career event in the stage.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.MaxCircuitsShownOnMap">
+            <summary>
+            Maximum amount of circuit events shown on the map.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.MaxDragsShownOnMap">
+            <summary>
+            Maximum amount of drag events shown on the map.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.MaxStreetXShownOnMap">
+            <summary>
+            Maximum amount of street X events shown on the map.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.MaxDriftsShownOnMap">
+            <summary>
+            Maximum amount of drift events shown on the map.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.MaxSprintsShownOnMap">
+            <summary>
+            Maximum amount of sprint events shown on the map.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.MaxOutrunEvents">
+            <summary>
+            Maximum amount of outrun events in the stage.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.StageSponsor1">
+            <summary>
+            Sponsor 1.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.StageSponsor2">
+            <summary>
+            Sponsor 2.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.StageSponsor3">
+            <summary>
+            Sponsor 3.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.StageSponsor4">
+            <summary>
+            Sponsor 4.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.StageSponsor5">
+            <summary>
+            Sponsor 5.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.NumberOfSponsorsToChoose">
+            <summary>
+            Number of sponsors in the stage.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.AttribSponsor1">
+            <summary>
+            Sponsor 1 attribute.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.AttribSponsor2">
+            <summary>
+            Sponsor 2 attribute.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.AttribSponsor3">
+            <summary>
+            Sponsor 3 attribute.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.AttribSponsor4">
+            <summary>
+            Sponsor 4 attribute.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.AttribSponsor5">
+            <summary>
+            Sponsor 5 attribute.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x04">
+            <summary>
+            Unknown value at offset 0x04.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.CareerIdentifier">
+            <summary>
+            Career identifier of this stage.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x26">
+            <summary>
+            Unknown value at offset 0x26.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x2C">
+            <summary>
+            Unknown value at offset 0x2C.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x2D">
+            <summary>
+            Unknown value at offset 0x2D.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x2E">
+            <summary>
+            Unknown value at offset 0x2E.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x2F">
+            <summary>
+            Unknown value at offset 0x2F.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x35">
+            <summary>
+            Unknown value at offset 0x35.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x36">
+            <summary>
+            Unknown value at offset 0x36.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x37">
+            <summary>
+            Unknown value at offset 0x37.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x38">
+            <summary>
+            Unknown value at offset 0x38.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x39">
+            <summary>
+            Unknown value at offset 0x39.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x3A">
+            <summary>
+            Unknown value at offset 0x3A.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x3B">
+            <summary>
+            Unknown value at offset 0x3B.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x3C">
+            <summary>
+            Unknown value at offset 0x3C.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x3D">
+            <summary>
+            Unknown value at offset 0x3D.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x3E">
+            <summary>
+            Unknown value at offset 0x3E.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x3F">
+            <summary>
+            Unknown value at offset 0x3F.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x41">
+            <summary>
+            Unknown value at offset 0x41.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x42">
+            <summary>
+            Unknown value at offset 0x42
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x43">
+            <summary>
+            Unknown value at offset 0x43
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x44">
+            <summary>
+            Unknown value at offset 0x44.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x48">
+            <summary>
+            Unknown value at offset 0x48.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCareerStage.Unknown0x4C">
+            <summary>
+            Unknown value at offset 0x4C.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerStage.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerStage.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerStage.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerStage.Assemble(System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerStage.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerStage"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerStage.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerStage.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerStage.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCareerStage.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/> is a collection of settings related to car unlock requirements.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCarUnlock.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCarUnlock.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCarUnlock.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCarUnlock.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCarUnlock.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCarUnlock.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCarUnlock.ReqEventCompleted1">
+            <summary>
+            One of the two required events completed to unlock the car.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GCarUnlock.ReqEventCompleted2">
+            <summary>
+            One of the two required events completed to unlock the car.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCarUnlock.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCarUnlock.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCarUnlock.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCarUnlock.Assemble(System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCarUnlock.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.GCarUnlock"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCarUnlock.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCarUnlock.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCarUnlock.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GCarUnlock.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.GShowcase">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/> is a collection of settings related to showcase events.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.GShowcase.TakePhotoMethod">
+            <summary>
+            Enum of taking photo methods in <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/>.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GShowcase.TakePhotoMethod.MagazineYourself">
+            <summary>
+            Take photo by yourself for magazine.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GShowcase.TakePhotoMethod.DVDYourself">
+            <summary>
+            Take photo by yourself for dvd.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GShowcase.TakePhotoMethod.MagazineAuto">
+            <summary>
+            Take photo in-place for magazine.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.GShowcase.TakePhotoMethod.DVDAuto">
+            <summary>
+            Take photo in-place for dvd.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.DescStringLabel">
+            <summary>
+            Description string for the showcase message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.DestinationPoint">
+            <summary>
+            Destination trigger of the showcase.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.DescAttrib">
+            <summary>
+            Descriptive attribute of the showcase.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.TakePhotoType">
+            <summary>
+            Method of taking photo.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.BelongsToStage">
+            <summary>
+            Stage to which this <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/> belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.CashValue">
+            <summary>
+            Cash value player gets from completing the showcase.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.RequiredVisualRating">
+            <summary>
+            Required visual rating of a car to unlock this <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.Unknown0x34">
+            <summary>
+            Unknown value at offset 0x34.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.GShowcase.RequiredToComplete">
+            <summary>
+            True if this <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/> is required to complete; false otherwise.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GShowcase.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GShowcase.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GShowcase.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GShowcase.Assemble(System.IO.BinaryWriter,System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/> with.</param>
+            <param name="strw"><see cref="T:System.IO.BinaryWriter"/> to write strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GShowcase.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.GShowcase"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GShowcase.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GShowcase.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerBrand"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GShowcase.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.GShowcase.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.PartPerformance">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> is a collection of settings related to performance parts.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType">
+            <summary>
+            Enum of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> types.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.WEIGHT_REDUCTION">
+            <summary>
+            Weight Reduction performance type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.DRIVETRAIN">
+            <summary>
+            Transmission/Drivetrain performance type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.NOS">
+            <summary>
+            Nitrous/NOS performance type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.ENGINE">
+            <summary>
+            Engine performance type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.TURBO">
+            <summary>
+            Supercharger/Turbo performance type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.SUSPENSION">
+            <summary>
+            Suspension performance type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.BRAKES">
+            <summary>
+            Calipers/Brakes performance type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.ECU">
+            <summary>
+            Control Unit/ECU performance type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.TIRES">
+            <summary>
+            Tires performance type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerformanceType.AERO">
+            <summary>
+            Aerodynamics/Aero performance type.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartCost">
+            <summary>
+            Price of the <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartAmplifierFraction">
+            <summary>
+            Percentage of whole package performance boost.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartRangeX">
+            <summary>
+            Range X of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartRangeY">
+            <summary>
+            Range Y of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartRangeZ">
+            <summary>
+            Range Z of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.BeingReplacedByIndex1">
+            <summary>
+            First part index by which this <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> can be replaced.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.BeingReplacedByIndex2">
+            <summary>
+            Second part index by which this <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> can be replaced.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.NumberOfBrands">
+            <summary>
+            Number of brands available to choose when installing the part.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartBrand1">
+            <summary>
+            Brand name 1.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartBrand2">
+            <summary>
+            Brand name 2.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartBrand3">
+            <summary>
+            Brand name 3.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartBrand4">
+            <summary>
+            Brand name 4.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartBrand5">
+            <summary>
+            Brand name 5.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartBrand6">
+            <summary>
+            Brand name 6.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartBrand7">
+            <summary>
+            Brand name 7.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PerfPartBrand8">
+            <summary>
+            Brand name 8.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PartPerformanceType">
+            <summary>
+            Type of the performance.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.UpgradeLevel">
+            <summary>
+            Upgrade level of the part.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.UpgradePartIndex">
+            <summary>
+            Index of the part in the performance package.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartPerformance.PartIndex">
+            <summary>
+            Index of the part.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartPerformance.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartPerformance.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartPerformance.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartPerformance.Assemble(System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartPerformance.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartPerformance.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartPerformance.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.PartPerformance"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartPerformance.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartPerformance.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/> is a collection of settings related to visual unlockable parts.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartUnlockReq">
+            <summary>
+            Enum of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/> requirements.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartUnlockReq.NoRequirements">
+            <summary>
+            No requirements.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartUnlockReq.SpecShopFound">
+            <summary>
+            Need to find specific shop.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartUnlockReq.ReqRegRacesWon">
+            <summary>
+            Need to win specific amount of Regular races.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartUnlockReq.ReqURLRacesWon">
+            <summary>
+            Need to win specific amount of URL races.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartUnlockReq.ReqSponRacesWon">
+            <summary>
+            Need to win specific amount of Sponsor races.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartUnlockReq.InitiallyUnlocked">
+            <summary>
+            Initially unlocked.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.UnlockableIndex">
+            <summary>
+            Unlockable index of this <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.VisualRatingLevel1">
+            <summary>
+            Visual rating of level 1 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.VisualRatingLevel2">
+            <summary>
+            Visual rating of level 2 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.VisualRatingLevel3">
+            <summary>
+            Visual rating of level 3 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartPriceLevel1">
+            <summary>
+            Price of level 1 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartPriceLevel2">
+            <summary>
+            Price of level 2 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.PartPriceLevel3">
+            <summary>
+            Price of level 3 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.UnlockMethodLevel1">
+            <summary>
+            Unlock method of level 1 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.UnlockMethodLevel2">
+            <summary>
+            Unlock method of level 2 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.UnlockMethodLevel3">
+            <summary>
+            Unlock method of level 3 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.UnlocksInShopLevel1">
+            <summary>
+            Shop that unlocks level 1 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.UnlocksInShopLevel2">
+            <summary>
+            Shop that unlocks level 2 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.UnlocksInShopLevel3">
+            <summary>
+            Shop that unlocks level 3 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.RequiredRacesWonLevel1">
+            <summary>
+            Required races won to unlock level 1 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.RequiredRacesWonLevel2">
+            <summary>
+            Required races won to unlock level 2 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.RequiredRacesWonLevel3">
+            <summary>
+            Required races won to unlock level 3 parts.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.BelongsToStageLevel1">
+            <summary>
+            Stage at which level 1 parts are being unlocked.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.BelongsToStageLevel2">
+            <summary>
+            Stage at which level 2 parts are being unlocked.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PartUnlockable.BelongsToStageLevel3">
+            <summary>
+            Stage at which level 3 parts are being unlocked.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartUnlockable.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartUnlockable.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartUnlockable.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartUnlockable.Assemble(System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartUnlockable.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.PartUnlockable"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartUnlockable.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartUnlockable.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartUnlockable.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PartUnlockable.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/> is a collection of settings related to performance sliders.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.MinSliderValueRatio">
+            <summary>
+            Minimum ratio slider value.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.MaxSliderValueRatio">
+            <summary>
+            Maximum ratio slider value.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.ValueSpread1">
+            <summary>
+            Value spread 1.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.ValueSpread2">
+            <summary>
+            Value spread 2.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.Assemble(System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.BankTrigger"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.PerfSliderTuning.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.SMSMessage">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/> is a collection of settings related to world messages.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType">
+            <summary>
+            Unlock type of an <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/>.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.Invalid">
+            <summary>
+            Invalid unlock type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.SpecificRaceWon">
+            <summary>
+            Requires specific race won.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.ShopFound">
+            <summary>
+            Requires shop being found.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.TimeElapsed">
+            <summary>
+            Requires specific game time elapsed.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.OutrunEngaged">
+            <summary>
+            Requires outrun being engaged.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.OutrunVictory">
+            <summary>
+            Requires victory in an outrun race.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.OutrunDefeat">
+            <summary>
+            Requires defeat in an outrun race.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.ReqSponRacesWon">
+            <summary>
+            Requires specific number of sponsor races won.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.ReqURLRacesWon">
+            <summary>
+            Requires specific number of URL races won.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.ReqRegRacesWon">
+            <summary>
+            Requires specific number of regular races won.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.MagazineUnlock">
+            <summary>
+            Requires a magazine being unlocked.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.DVDUnlock">
+            <summary>
+            Requires a DVD being unlocked.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockType.FreeroamFind">
+            <summary>
+            Requires being found in the freeroam.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.SMSMessage.MailType">
+            <summary>
+            Mail type of an <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/>.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.MailType.Invalid">
+            <summary>
+            Invalid mail type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.MailType.Inbox">
+            <summary>
+            Message is an inbox mail.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.MailType.GameTips">
+            <summary>
+            Message is a game tip.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.MailType.Showcase">
+            <summary>
+            Message is about a showcase.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.MailType.Rachel">
+            <summary>
+            Message is from Rachel.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.MailType.Unlock">
+            <summary>
+            Message is about an unlock.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType">
+            <summary>
+            Icon type of an <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/>.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Invalid">
+            <summary>
+            Invalid icon type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Rachel">
+            <summary>
+            Rachel/Yellow icon type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Opponent">
+            <summary>
+            Opponent/Orange icon type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Showcase">
+            <summary>
+            Showcase/Star icon type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Outrun">
+            <summary>
+            Outrun/Red icon type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Shop">
+            <summary>
+            Shop/Magenta icon type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Tips">
+            <summary>
+            Tips/Blue icon type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Race">
+            <summary>
+            Race/Purple icon type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Mail">
+            <summary>
+            Mail/Green icon type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconType.Freeroam">
+            <summary>
+            Freeroam/Green icon type.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.UnlockRequirement">
+            <summary>
+            Unlock requirement for this message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.StorageType">
+            <summary>
+            Storage type of this message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.AutoOpen">
+            <summary>
+            True if message should be automatically opened; false otherwise.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.IconStyle">
+            <summary>
+            Icon style of this message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.CareerIdentifier">
+            <summary>
+            Career identifier for this message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.RequiredSpecRaceWon">
+            <summary>
+            Required specific race won to unlock this message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.RequiredShopFound">
+            <summary>
+            Required shop found to unlock this message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.RequiredTimeElapsed">
+            <summary>
+            Required time elapsed to unlock this message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.RequiredRacesWon">
+            <summary>
+            Required number of races won to unlock this message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.RequiredDVDUnlocked">
+            <summary>
+            Required DVD number unlocked to unlock this message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.FreeroamTrigger">
+            <summary>
+            Freeroam engage trigger of the message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.BelongsToStage">
+            <summary>
+            Stage to which this message belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.CashValue">
+            <summary>
+            Cash value player gets when receiving the message.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.SMSMessage.MessageSender">
+            <summary>
+            String label of the sender of the message.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.SMSMessage.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.SMSMessage.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.SMSMessage.#ctor(System.IO.BinaryReader,System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+            <param name="strr"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.SMSMessage.Assemble(System.IO.BinaryWriter,System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/> with.</param>
+            <param name="strw"><see cref="T:System.IO.BinaryWriter"/> to write strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.SMSMessage.Disassemble(System.IO.BinaryReader,System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/> with.</param>
+            <param name="strr"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.SMSMessage.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.SMSMessage.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.SMSMessage.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.SMSMessage.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.Sponsor">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> is a collection of settings related to sponsors and contracts.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.Sponsor.SponsorRaceType">
+            <summary>
+            Enum of <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> race types.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.Sponsor.SponsorRaceType.None">
+            <summary>
+            No race type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.Sponsor.SponsorRaceType.Circuit">
+            <summary>
+            Circuit race type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.Sponsor.SponsorRaceType.Drift">
+            <summary>
+            Drag race type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.Sponsor.SponsorRaceType.Drag">
+            <summary>
+            Drag race type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.Sponsor.SponsorRaceType.Sprint">
+            <summary>
+            Sprint race type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.Sponsor.SponsorRaceType.StreetX">
+            <summary>
+            StreetX race type.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.ReqSponsorRace1">
+            <summary>
+            First required sponsor race to win.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.ReqSponsorRace2">
+            <summary>
+            Second required sponsor race to win.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.ReqSponsorRace3">
+            <summary>
+            Third required sponsor race to win.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.CashValuePerWin">
+            <summary>
+            Cash value player gets per winning in a sponsor race.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.SignCashBonus">
+            <summary>
+            Cash value player gets when signing contract with this <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.Sponsor.PotentialCashBonus">
+            <summary>
+            Potential cash value player can get when signing with this <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.Sponsor.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.Sponsor.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.Sponsor.#ctor(System.IO.BinaryReader,System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.SMSMessage"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+            <param name="strr"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.Sponsor.Assemble(System.IO.BinaryWriter,System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> with.</param>
+            <param name="strw"><see cref="T:System.IO.BinaryWriter"/> to write strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.Sponsor.Disassemble(System.IO.BinaryReader,System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> with.</param>
+            <param name="strr"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.Sponsor.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.Sponsor.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.Sponsor.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.Sponsor.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> is a collection of settings related to world challenge events.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge.WorldChallengeType">
+            <summary>
+            Enum of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/> types.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldChallenge.WorldChallengeType.Invalid">
+            <summary>
+            Invalid challenge type.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldChallenge.WorldChallengeType.Visual">
+            <summary>
+            Unlocks visual upgrade.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldChallenge.WorldChallengeType.Performance">
+            <summary>
+            Unlocks performance upgrade.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldChallenge.WorldChallengeType.Showcase">
+            <summary>
+            Is a showcase event.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge.UnlockType">
+            <summary>
+            Enum of unlock types for <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/>.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldChallenge.UnlockType.ReqRegRacesWon">
+            <summary>
+            Requires specific number of regular races won to unlock.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldChallenge.UnlockType.ReqURLRacesWon">
+            <summary>
+            Requires specific number of URL races won to unlock.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldChallenge.UnlockType.ReqOutrunsWon">
+            <summary>
+            Requires specific number of outrun races won to unlock.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldChallenge.UnlockType.ReqSponRacesWon">
+            <summary>
+            Requires specific number of sponsor races won to unlock.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldChallenge.UnlockType.ReqWorldChalWon">
+            <summary>
+            Requires specific number of world challenges won to unlock.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.WorldChallengeTrigger">
+            <summary>
+            Event trigger of this <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.BelongsToStage">
+            <summary>
+            Stage to which this challenge belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.UnlockMethod">
+            <summary>
+            True if challenge requires specific number of outruns won in order to unlock; 
+            false otherwise.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.RequiredRacesWon">
+            <summary>
+            Required races won to unlock this <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.UnlockableSMS">
+            <summary>
+            Label of the SMS sent when challenge is unlocked.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.Destination">
+            <summary>
+            Parent, or destination in this <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.TimeLimit">
+            <summary>
+            Time limit to complete this challenge.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.ChallengeType">
+            <summary>
+            Type of the challenge.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.PartUnlockable1">
+            <summary>
+            Index of the first unique part that gets unlocked upon completion.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.PartUnlockable2">
+            <summary>
+            Index of the second unique part that gets unlocked upon completion.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldChallenge.PartUnlockable3">
+            <summary>
+            Index of the third unique part that gets unlocked upon completion.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldChallenge.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldChallenge.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldChallenge.#ctor(System.IO.BinaryReader,System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldChallenge"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+            <param name="strr"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldChallenge.Assemble(System.IO.BinaryWriter,System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> with.</param>
+            <param name="strw"><see cref="T:System.IO.BinaryWriter"/> to write strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldChallenge.Disassemble(System.IO.BinaryReader,System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> with.</param>
+            <param name="strr"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldChallenge.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldChallenge.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldChallenge.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldChallenge.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.WorldShop">
+            <summary>
+            <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/> is a collection of settings related to shops and premises.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.WorldShop.WorldShopType">
+            <summary>
+            Enum of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/> types.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.WorldShopType.CribGarage">
+            <summary>
+            Garage.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.WorldShopType.PaintShop">
+            <summary>
+            Paint shop.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.WorldShopType.PartsShop">
+            <summary>
+            Parts shop.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.WorldShopType.PerfShop">
+            <summary>
+            Performance shop.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.WorldShopType.CarLot">
+            <summary>
+            Car lot.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.WorldShopType.AudioShop">
+            <summary>
+            Specialties shop.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.WorldShopType.Unique">
+            <summary>
+            Uniques shop.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Gameplay.WorldShop.UnlockType">
+            <summary>
+            Enum of unlock conditions for <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/>.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.UnlockType.InitiallyUnlocked">
+            <summary>
+            Unlocked from the start.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.UnlockType.SpecificRaceWon">
+            <summary>
+            Requires specific race completed.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.UnlockType.ReqURLRacesWon">
+            <summary>
+            Requires specific number of URL races won.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.UnlockType.ReqRegRacesWon">
+            <summary>
+            Requires specific number of regular races won.
+            </summary>
+        </member>
+        <member name="F:Nikki.Support.MostWanted.Gameplay.WorldShop.UnlockType.ReqSponRacesWon">
+            <summary>
+            Requires specific number of sponsor races won.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.GameINT">
+            <summary>
+            Game to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.GameSTR">
+            <summary>
+            Game string to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.Career">
+            <summary>
+            GCareer to which the class belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.CollectionName">
+            <summary>
+            Collection name of the variable.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.BinKey">
+            <summary>
+            Binary memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.VltKey">
+            <summary>
+            Vault memory hash of the collection name.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.ShopFilename">
+            <summary>
+            Filename of shop in-game textures.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.IntroMovie">
+            <summary>
+            Movie shown when first-time entering shop.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.ShopTrigger">
+            <summary>
+            Event trigger of this <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.ShopType">
+            <summary>
+            Type of the shop.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.InitiallyHidden">
+            <summary>
+            True if this <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/> is initially hidden on the world map; 
+            false otherwise.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.UnlockMethod">
+            <summary>
+            Unlock type of this <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.BelongsToStage">
+            <summary>
+            Stage to which this <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/> belongs to.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.RequiredSpecRaceWon">
+            <summary>
+            Event name that should be completed to unlock this shop.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Gameplay.WorldShop.RequiredRacesWon">
+            <summary>
+            Number of required races won.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldShop.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/>.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldShop.#ctor(System.String,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/>.
+            </summary>
+            <param name="CName">CollectionName of the new instance.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldShop.#ctor(System.IO.BinaryReader,Nikki.Support.MostWanted.Class.GCareer)">
+            <summary>
+            Initializes new instance of <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/>.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="career"><see cref="T:Nikki.Support.MostWanted.Class.GCareer"/> to which this instance belongs to.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldShop.Assemble(System.IO.BinaryWriter,System.IO.BinaryWriter)">
+            <summary>
+            Assembles <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/> into a byte array.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write <see cref="T:Nikki.Support.MostWanted.Gameplay.WorldShop"/> with.</param>
+            <param name="strw"><see cref="T:System.IO.BinaryWriter"/> to write strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldShop.Disassemble(System.IO.BinaryReader)">
+            <summary>
+            Disassembles array into <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> properties.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read <see cref="T:Nikki.Support.MostWanted.Gameplay.Sponsor"/> with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldShop.MemoryCast(System.String)">
+            <summary>
+            Casts all attributes from this object to another one.
+            </summary>
+            <param name="CName">CollectionName of the new created object.</param>
+            <returns>Memory casted copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldShop.ToString">
+            <summary>
+            Returns CollectionName, BinKey and GameSTR of this <see cref="T:Nikki.Support.MostWanted.Gameplay.GCareerRace"/> 
+            as a string value.
+            </summary>
+            <returns>String value.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldShop.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Gameplay.WorldShop.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
         <member name="T:Nikki.Support.MostWanted.Parts.CarParts.CPStruct">
             <summary>
             A unit <see cref="T:Nikki.Support.MostWanted.Parts.CarParts.RealCarPart"/> struct with geometry part names.
@@ -20925,6 +24622,114 @@
             </summary>
             <param name="br"><see cref="T:System.IO.BinaryReader"/> to read with.</param>
             <param name="str_reader"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Parts.GameParts.Opponent">
+            <summary>
+            A unit <see cref="T:Nikki.Support.MostWanted.Parts.GameParts.Opponent"/> that is used in career races.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Opponent.Name">
+            <summary>
+            Name of the opponent.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Opponent.StatsMultiplier">
+            <summary>
+            Opponent's performance stats multiplier.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Opponent.PresetRide">
+            <summary>
+            Preset ride of the opponent.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Opponent.SkillEasy">
+            <summary>
+            Easy skill of the opponent.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Opponent.SkillMedium">
+            <summary>
+            Medium skill of the opponent.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Opponent.SkillHard">
+            <summary>
+            Hard skill of the opponent.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Opponent.CatchUp">
+            <summary>
+            Catch up of the opponent.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Parts.GameParts.Opponent.PlainCopy">
+            <summary>
+            Creates a plain copy of the objects that contains same values.
+            </summary>
+            <returns>Exact plain copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Parts.GameParts.Opponent.Read(System.IO.BinaryReader,System.IO.BinaryReader)">
+            <summary>
+            Reads data using <see cref="T:System.IO.BinaryReader"/> provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+            <param name="strr"><see cref="T:System.IO.BinaryReader"/> to read strings with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Parts.GameParts.Opponent.Write(System.IO.BinaryWriter,System.IO.BinaryWriter)">
+            <summary>
+            Writes data using <see cref="T:System.IO.BinaryWriter"/> provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+            <param name="strw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Parts.GameParts.Opponent.Serialize(System.IO.BinaryWriter)">
+            <summary>
+            Serializes instance into a byte array and stores it in the file provided.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Parts.GameParts.Opponent.Deserialize(System.IO.BinaryReader)">
+            <summary>
+            Deserializes byte array into an instance by loading data from the file provided.
+            </summary>
+        </member>
+        <member name="T:Nikki.Support.MostWanted.Parts.GameParts.Stage">
+            <summary>
+            A unit <see cref="T:Nikki.Support.MostWanted.Parts.GameParts.Stage"/> that is used in career races.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Stage.TrackID">
+            <summary>
+            Track ID of this <see cref="T:Nikki.Support.MostWanted.Parts.GameParts.Stage"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Stage.NumberOfLaps">
+            <summary>
+            Number of laps in this <see cref="T:Nikki.Support.MostWanted.Parts.GameParts.Stage"/>.
+            </summary>
+        </member>
+        <member name="P:Nikki.Support.MostWanted.Parts.GameParts.Stage.InReverseDirection">
+            <summary>
+            True if this <see cref="T:Nikki.Support.MostWanted.Parts.GameParts.Stage"/> is in reverse direction; false otherwise.
+            </summary>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Parts.GameParts.Stage.PlainCopy">
+            <summary>
+            Creates a plain copy of the objects that contains same values.
+            </summary>
+            <returns>Exact plain copy of the object.</returns>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Parts.GameParts.Stage.Read(System.IO.BinaryReader)">
+            <summary>
+            Reads data using <see cref="T:System.IO.BinaryReader"/> provided.
+            </summary>
+            <param name="br"><see cref="T:System.IO.BinaryReader"/> to read data with.</param>
+        </member>
+        <member name="M:Nikki.Support.MostWanted.Parts.GameParts.Stage.Write(System.IO.BinaryWriter)">
+            <summary>
+            Writes data using <see cref="T:System.IO.BinaryWriter"/> provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write data with.</param>
         </member>
         <member name="T:Nikki.Support.MostWanted.Parts.PresetParts.Attachments">
             <summary>

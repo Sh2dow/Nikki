@@ -1451,5 +1451,58 @@ namespace Nikki.Core
 		internal abstract void CreationCheck(string cname);
 
 		#endregion
+        
+        #region Helper Methods for Game Conversion
+
+        /// <summary>
+        /// Attempts to convert a collection from one game format to another.
+        /// </summary>
+        /// <param name="collection">The collection to be converted.</param>
+        /// <param name="sourceGame">The original game identifier.</param>
+        /// <param name="targetGame">The target game identifier.</param>
+        public void ConvertCollectionToGame(T collection, GameINT sourceGame, GameINT targetGame)
+        {
+            if (sourceGame == GameINT.MostWanted && targetGame == GameINT.Carbon)
+            {
+                // Conversion logic from MostWanted to Carbon
+                collection.CollectionName = AdjustForTargetGame(collection.CollectionName);
+                // Apply other game-specific conversions as needed
+            }
+            else if (sourceGame == GameINT.Carbon && targetGame == GameINT.MostWanted)
+            {
+                // Conversion logic from Carbon to MostWanted
+                collection.CollectionName = AdjustForSourceGame(collection.CollectionName);
+                // Apply other game-specific conversions as needed
+            }
+            else
+            {
+                throw new NotSupportedException($"Conversion from {sourceGame} to {targetGame} is not supported.");
+            }
+        }
+
+        /// <summary>
+        /// Adjusts a property value for the target game.
+        /// </summary>
+        /// <param name="value">The original value.</param>
+        /// <returns>The adjusted value.</returns>
+        private string AdjustForTargetGame(string value)
+        {
+            // Implement logic to adjust values for the target game
+            return value.ToUpperInvariant(); // Example logic
+        }
+
+        /// <summary>
+        /// Adjusts a property value for the source game.
+        /// </summary>
+        /// <param name="value">The original value.</param>
+        /// <returns>The adjusted value.</returns>
+        private string AdjustForSourceGame(string value)
+        {
+            // Implement logic to adjust values for the source game
+            return value.ToLowerInvariant(); // Example logic
+        }
+
+        #endregion
+
 	}
 }
