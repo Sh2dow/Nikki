@@ -37098,6 +37098,11 @@
             <see cref="T:Nikki.Core.Manager`1"/> that manages <see cref="T:Nikki.Support.Undercover.Class.VectorVinyl"/>.
             </summary>
         </member>
+        <member name="P:Nikki.Support.Undercover.Datamap.SkinRegions">
+            <summary>
+            <see cref="T:Nikki.Core.Manager`1"/> that manages <see cref="T:Nikki.Support.Undercover.Class.SkinRegion"/>.
+            </summary>
+        </member>
         <member name="M:Nikki.Support.Undercover.Datamap.Load(Nikki.Core.Options)">
             <summary>
             Loads all data in the database using options passed.
