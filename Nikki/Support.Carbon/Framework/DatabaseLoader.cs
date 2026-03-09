@@ -99,12 +99,16 @@ namespace Nikki.Support.Carbon.Framework
 
 		private void ReadFromStream()
 		{
+			this._db.SourceFilePath = this._options.File;
+			this._db.CanReadFromSourceFile = true;
 			using var br = new BinaryReader(File.Open(this._options.File, FileMode.Open, FileAccess.Read));
 			this.Disassemble(br);
 		}
 
 		private void ReadFromBuffer(bool compressed)
 		{
+			this._db.SourceFilePath = this._options.File;
+			this._db.CanReadFromSourceFile = false;
 			var buffer = File.ReadAllBytes(this._options.File);
 			if (compressed) buffer = Interop.Decompress(buffer);
 			using var ms = new MemoryStream(buffer);

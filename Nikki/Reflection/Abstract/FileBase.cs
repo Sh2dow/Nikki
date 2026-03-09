@@ -30,6 +30,16 @@ namespace Nikki.Reflection.Abstract
         public List<IManager> Managers { get; }
 
         /// <summary>
+        /// Path of the currently loaded source file when the database is backed directly by disk.
+        /// </summary>
+        public string SourceFilePath { get; internal set; } = string.Empty;
+
+        /// <summary>
+        /// True if collection payloads can be read lazily from <see cref="SourceFilePath"/>.
+        /// </summary>
+        public bool CanReadFromSourceFile { get; internal set; }
+
+        /// <summary>
         /// Initializes new instance of <see cref="FileBase"/>.
         /// </summary>
         public FileBase() => this.Managers = new List<IManager>();

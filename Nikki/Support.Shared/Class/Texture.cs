@@ -21,6 +21,9 @@ namespace Nikki.Support.Shared.Class
 
         private byte[] _data;
         private int _decodedSize;
+        private string _lazySourceFile;
+        private long _lazyBaseOffset;
+        private readonly object _dataSync = new object();
 
 		#endregion
 
@@ -497,11 +500,16 @@ namespace Nikki.Support.Shared.Class
 		{
             get
 			{
+                this.EnsureDataLoaded();
                 if (this._decodedSize == 0) return this._data;
+                if (this._data is null) return null;
                 return LZF.Decompress(this._data, this._decodedSize);
 			}
             set
 			{
+                this._lazySourceFile = null;
+                this._lazyBaseOffset = 0;
+
                 if (value is null || value.Length == 0)
 				{
 
@@ -582,6 +590,19 @@ namespace Nikki.Support.Shared.Class
         public virtual void Reload(string filename) => this.Initialize(filename);
 
         /// <summary>
+        /// Configures raw payload to be loaded on demand from the original source file.
+        /// </summary>
+        /// <param name="filename">Path of the source file.</param>
+        /// <param name="baseOffset">Base offset of the texture data block.</param>
+        public void SetLazySource(string filename, long baseOffset)
+        {
+            this._lazySourceFile = filename;
+            this._lazyBaseOffset = baseOffset;
+            this._data = null;
+            this._decodedSize = this.PaletteSize + this.Size;
+        }
+
+        /// <summary>
         /// Casts all attributes from this object to another one.
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
@@ -597,6 +618,7 @@ namespace Nikki.Support.Shared.Class
         /// <returns>LZF compressed data buffer.</returns>
         protected byte[] GetCompressedBuffer()
 		{
+            this.EnsureDataLoaded();
             return this._data;
 		}
 
@@ -608,9 +630,40 @@ namespace Nikki.Support.Shared.Class
         protected static void CopyMemory(Texture from, Texture to)
 		{
             to._decodedSize = from._decodedSize;
+            to._lazySourceFile = from._lazySourceFile;
+            to._lazyBaseOffset = from._lazyBaseOffset;
+
+            if (from._data is null)
+            {
+                to._data = null;
+                return;
+            }
+
             to._data = new byte[from._data.Length];
             Array.Copy(from._data, to._data, to._data.Length);
 		}
+
+        private void EnsureDataLoaded()
+        {
+            if (this._data != null || this._decodedSize == 0 || string.IsNullOrEmpty(this._lazySourceFile)) return;
+
+            lock (this._dataSync)
+            {
+                if (this._data != null || string.IsNullOrEmpty(this._lazySourceFile)) return;
+
+                int total = this.PaletteSize + this.Size;
+                var data = new byte[total];
+
+                using var br = new BinaryReader(File.Open(this._lazySourceFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+                var offset = this._lazyBaseOffset;
+                br.BaseStream.Position = offset + this.PaletteOffset;
+                Array.Copy(br.ReadBytes(this.PaletteSize), 0, data, 0, this.PaletteSize);
+                br.BaseStream.Position = offset + this.Offset;
+                Array.Copy(br.ReadBytes(this.Size), 0, data, this.PaletteSize, this.Size);
+
+                this._data = LZF.Compress(data);
+            }
+        }
 
         #endregion
     }
