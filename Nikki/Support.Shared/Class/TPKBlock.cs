@@ -764,6 +764,7 @@ namespace Nikki.Support.Shared.Class
                 var data = this.Textures[loop].Data;
                 bw.Write(data);
                 bw.FillBuffer(0x80);
+                this.Textures[loop].ReleaseCachedData();
 
             }
 
@@ -876,6 +877,8 @@ namespace Nikki.Support.Shared.Class
                 // Fill buffer till offset % 0x40
                 bw.FillBuffer(0x40);
 
+                texture.ReleaseCachedData();
+
                 // Yield return OffSlot made
                 result.Add(offslot);
 
@@ -980,6 +983,8 @@ namespace Nikki.Support.Shared.Class
 
                 // Fill buffer till offset % 0x40
                 bw.FillBuffer(0x40);
+
+                texture.ReleaseCachedData();
 
                 // Yield return OffSlot made
                 result.Add(offslot);
@@ -1179,6 +1184,8 @@ namespace Nikki.Support.Shared.Class
 
                 // Fill buffer till offset % 0x40
                 bw.FillBuffer(0x40);
+
+                texture.ReleaseCachedData();
 
                 // Yield return OffSlot made
                 result.Add(offslot);

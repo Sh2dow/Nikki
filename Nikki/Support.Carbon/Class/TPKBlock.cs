@@ -310,7 +310,15 @@ namespace Nikki.Support.Carbon.Class
                 {
                 
                     br.BaseStream.Position = PartOffsets[6] + 0x7C;
-                    this.Textures[a1].ReadData(br, false);
+
+                    if (this.Manager?.Database?.CanReadFromSourceFile == true)
+                    {
+                        this.Textures[a1].SetLazySource(this.Manager.Database.SourceFilePath, PartOffsets[6] + 0x7C);
+                    }
+                    else
+                    {
+                        this.Textures[a1].ReadData(br, false);
+                    }
                 
                 }
             
@@ -897,6 +905,7 @@ namespace Nikki.Support.Carbon.Class
             {
 
                 this.Textures[loop].Serialize(bw);
+                this.Textures[loop].ReleaseCachedData();
 
             }
 

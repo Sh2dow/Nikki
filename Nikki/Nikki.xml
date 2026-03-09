@@ -900,6 +900,16 @@
             List of <see cref="T:Nikki.Reflection.Interface.IManager"/> types that are used by this <see cref="T:Nikki.Reflection.Abstract.FileBase"/>.
             </summary>
         </member>
+        <member name="P:Nikki.Reflection.Abstract.FileBase.SourceFilePath">
+            <summary>
+            Path of the currently loaded source file when the database is backed directly by disk.
+            </summary>
+        </member>
+        <member name="P:Nikki.Reflection.Abstract.FileBase.CanReadFromSourceFile">
+            <summary>
+            True if collection payloads can be read lazily from <see cref="P:Nikki.Reflection.Abstract.FileBase.SourceFilePath"/>.
+            </summary>
+        </member>
         <member name="M:Nikki.Reflection.Abstract.FileBase.#ctor">
             <summary>
             Initializes new instance of <see cref="T:Nikki.Reflection.Abstract.FileBase"/>.
@@ -29273,6 +29283,25 @@
             Reloads <see cref="T:Nikki.Support.Shared.Class.Texture"/> properties based on the new file passed.
             </summary>
             <param name="filename">Filename of .dds texture passed.</param>
+        </member>
+        <member name="M:Nikki.Support.Shared.Class.Texture.WriteDDS(System.IO.BinaryWriter,System.Boolean)">
+            <summary>
+            Writes texture as a DDS file to the writer provided.
+            </summary>
+            <param name="bw"><see cref="T:System.IO.BinaryWriter"/> to write DDS data with.</param>
+            <param name="makeNoPalette">True if palette should be expanded to RGBA; false otherwise.</param>
+        </member>
+        <member name="M:Nikki.Support.Shared.Class.Texture.SetLazySource(System.String,System.Int64)">
+            <summary>
+            Configures raw payload to be loaded on demand from the original source file.
+            </summary>
+            <param name="filename">Path of the source file.</param>
+            <param name="baseOffset">Base offset of the texture data block.</param>
+        </member>
+        <member name="M:Nikki.Support.Shared.Class.Texture.ReleaseCachedData">
+            <summary>
+            Drops the in-memory payload cache for textures that can be re-read from disk.
+            </summary>
         </member>
         <member name="M:Nikki.Support.Shared.Class.Texture.MemoryCast(System.String)">
             <summary>

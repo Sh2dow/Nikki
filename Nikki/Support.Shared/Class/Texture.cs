@@ -3,10 +3,12 @@ using System.IO;
 using System.ComponentModel;
 using Nikki.Core;
 using Nikki.Utils;
+using Nikki.Utils.DDS;
 using Nikki.Reflection.Enum;
 using Nikki.Reflection.Abstract;
 using Nikki.Reflection.Interface;
 using Nikki.Reflection.Attributes;
+using CoreExtensions.IO;
 
 
 
@@ -21,6 +23,9 @@ namespace Nikki.Support.Shared.Class
 
         private byte[] _data;
         private int _decodedSize;
+        private string _lazySourceFile;
+        private long _lazyBaseOffset;
+        private readonly object _dataSync = new object();
 
 		#endregion
 
@@ -497,11 +502,16 @@ namespace Nikki.Support.Shared.Class
 		{
             get
 			{
+                this.EnsureDataLoaded();
                 if (this._decodedSize == 0) return this._data;
+                if (this._data is null) return null;
                 return LZF.Decompress(this._data, this._decodedSize);
 			}
             set
 			{
+                this._lazySourceFile = null;
+                this._lazyBaseOffset = 0;
+
                 if (value is null || value.Length == 0)
 				{
 
@@ -582,6 +592,53 @@ namespace Nikki.Support.Shared.Class
         public virtual void Reload(string filename) => this.Initialize(filename);
 
         /// <summary>
+        /// Writes texture as a DDS file to the writer provided.
+        /// </summary>
+        /// <param name="bw"><see cref="BinaryWriter"/> to write DDS data with.</param>
+        /// <param name="makeNoPalette">True if palette should be expanded to RGBA; false otherwise.</param>
+        public virtual void WriteDDS(BinaryWriter bw, bool makeNoPalette)
+        {
+            if (!makeNoPalette && !string.IsNullOrEmpty(this._lazySourceFile))
+            {
+                this.WriteDDSHeader(bw, this.Compression, this.PaletteSize + this.Size);
+                var written = this.WriteRawTextureData(bw.BaseStream);
+                var expected = this.ExpectedDdsPayloadLength(this.Compression);
+
+                if (expected > written)
+                {
+                    bw.WriteBytes(0, expected - written);
+                }
+
+                return;
+            }
+
+            bw.Write(this.GetDDSArray(makeNoPalette));
+            this.ReleaseCachedData();
+        }
+
+        /// <summary>
+        /// Configures raw payload to be loaded on demand from the original source file.
+        /// </summary>
+        /// <param name="filename">Path of the source file.</param>
+        /// <param name="baseOffset">Base offset of the texture data block.</param>
+        public void SetLazySource(string filename, long baseOffset)
+        {
+            this._lazySourceFile = filename;
+            this._lazyBaseOffset = baseOffset;
+            this._data = null;
+            this._decodedSize = this.PaletteSize + this.Size;
+        }
+
+        /// <summary>
+        /// Drops the in-memory payload cache for textures that can be re-read from disk.
+        /// </summary>
+        public void ReleaseCachedData()
+        {
+            if (string.IsNullOrEmpty(this._lazySourceFile)) return;
+            this._data = null;
+        }
+
+        /// <summary>
         /// Casts all attributes from this object to another one.
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
@@ -597,6 +654,7 @@ namespace Nikki.Support.Shared.Class
         /// <returns>LZF compressed data buffer.</returns>
         protected byte[] GetCompressedBuffer()
 		{
+            this.EnsureDataLoaded();
             return this._data;
 		}
 
@@ -608,9 +666,213 @@ namespace Nikki.Support.Shared.Class
         protected static void CopyMemory(Texture from, Texture to)
 		{
             to._decodedSize = from._decodedSize;
+            to._lazySourceFile = from._lazySourceFile;
+            to._lazyBaseOffset = from._lazyBaseOffset;
+
+            if (from._data is null)
+            {
+                to._data = null;
+                return;
+            }
+
             to._data = new byte[from._data.Length];
             Array.Copy(from._data, to._data, to._data.Length);
 		}
+
+        private void EnsureDataLoaded()
+        {
+            if (this._data != null || this._decodedSize == 0 || string.IsNullOrEmpty(this._lazySourceFile)) return;
+
+            lock (this._dataSync)
+            {
+                if (this._data != null || string.IsNullOrEmpty(this._lazySourceFile)) return;
+
+                int total = this.PaletteSize + this.Size;
+                var data = new byte[total];
+
+                using var br = new BinaryReader(File.Open(this._lazySourceFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+                var offset = this._lazyBaseOffset;
+                br.BaseStream.Position = offset + this.PaletteOffset;
+                Array.Copy(br.ReadBytes(this.PaletteSize), 0, data, 0, this.PaletteSize);
+                br.BaseStream.Position = offset + this.Offset;
+                Array.Copy(br.ReadBytes(this.Size), 0, data, this.PaletteSize, this.Size);
+
+                this._data = LZF.Compress(data);
+            }
+        }
+
+        private int WriteRawTextureData(Stream output)
+        {
+            using var input = File.Open(this._lazySourceFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            var written = 0;
+            written += CopySegment(input, output, this._lazyBaseOffset + this.PaletteOffset, this.PaletteSize);
+            written += CopySegment(input, output, this._lazyBaseOffset + this.Offset, this.Size);
+            return written;
+        }
+
+        private static int CopySegment(Stream input, Stream output, long offset, int count)
+        {
+            if (count <= 0) return 0;
+
+            input.Position = offset;
+            var buffer = new byte[Math.Min(count, 1 << 20)];
+            var remaining = count;
+            var written = 0;
+
+            while (remaining > 0)
+            {
+                var read = input.Read(buffer, 0, Math.Min(buffer.Length, remaining));
+                if (read <= 0) throw new EndOfStreamException("Unexpected end of texture source stream.");
+                output.Write(buffer, 0, read);
+                remaining -= read;
+                written += read;
+            }
+
+            return written;
+        }
+
+        private void WriteDDSHeader(BinaryWriter bw, TextureCompressionType compression, int dataLength)
+        {
+            var flags = DDS_HEADER_FLAGS.TEXTURE | DDS_HEADER_FLAGS.MIPMAP;
+            flags |= IsCompressed(compression) ? DDS_HEADER_FLAGS.LINEARSIZE : DDS_HEADER_FLAGS.PITCH;
+
+            bw.Write(DDS_MAIN.MAGIC);
+            bw.Write(0x7C);
+            bw.WriteEnum(flags);
+            bw.Write((int)this.Height);
+            bw.Write((int)this.Width);
+            bw.Write(PitchLinearSize(compression));
+            bw.Write(1);
+            bw.Write((int)this.Mipmaps);
+            bw.WriteBytes(0, 0x2C);
+            WritePixelFormat(bw, compression);
+            bw.WriteEnum(DDS_SURFACE.SURFACE_FLAGS_ALL);
+            bw.WriteBytes(0, 0x10);
+        }
+
+        private int PitchLinearSize(TextureCompressionType compression)
+        {
+            return compression switch
+            {
+                TextureCompressionType.TEXCOMP_DXTC1 => Math.Max(1, (this.Width + 3) / 4) * Math.Max(1, (this.Height + 3) / 4) * 8,
+                TextureCompressionType.TEXCOMP_DXTC3 => Math.Max(1, (this.Width + 3) / 4) * Math.Max(1, (this.Height + 3) / 4) * 16,
+                TextureCompressionType.TEXCOMP_DXTC5 => Math.Max(1, (this.Width + 3) / 4) * Math.Max(1, (this.Height + 3) / 4) * 16,
+                TextureCompressionType.TEXCOMP_4BIT => (this.Width * 4 + 7) / 8,
+                TextureCompressionType.TEXCOMP_4BIT_IA8 => (this.Width * 4 + 7) / 8,
+                TextureCompressionType.TEXCOMP_4BIT_RGB16_A8 => (this.Width * 4 + 7) / 8,
+                TextureCompressionType.TEXCOMP_4BIT_RGB24_A8 => (this.Width * 4 + 7) / 8,
+                TextureCompressionType.TEXCOMP_8BIT => (this.Width * 8 + 7) / 8,
+                TextureCompressionType.TEXCOMP_8BIT_16 => (this.Width * 8 + 7) / 8,
+                TextureCompressionType.TEXCOMP_8BIT_64 => (this.Width * 8 + 7) / 8,
+                TextureCompressionType.TEXCOMP_8BIT_IA8 => (this.Width * 8 + 7) / 8,
+                TextureCompressionType.TEXCOMP_8BIT_RGB16_A8 => (this.Width * 8 + 7) / 8,
+                TextureCompressionType.TEXCOMP_8BIT_RGB24_A8 => (this.Width * 8 + 7) / 8,
+                TextureCompressionType.TEXCOMP_16BIT => (this.Width * 16 + 7) / 8,
+                TextureCompressionType.TEXCOMP_16BIT_1555 => (this.Width * 16 + 7) / 8,
+                TextureCompressionType.TEXCOMP_16BIT_3555 => (this.Width * 16 + 7) / 8,
+                TextureCompressionType.TEXCOMP_16BIT_565 => (this.Width * 16 + 7) / 8,
+                TextureCompressionType.TEXCOMP_24BIT => (this.Width * 24 + 7) / 8,
+                _ => (this.Width * 32 + 7) / 8,
+            };
+        }
+
+        private static bool IsCompressed(TextureCompressionType compression) =>
+            compression == TextureCompressionType.TEXCOMP_DXTC1 ||
+            compression == TextureCompressionType.TEXCOMP_DXTC3 ||
+            compression == TextureCompressionType.TEXCOMP_DXTC5;
+
+        private int ExpectedDdsPayloadLength(TextureCompressionType compression)
+        {
+            var payload = this.PaletteSize;
+            var width = Math.Max(1, (int)this.Width);
+            var height = Math.Max(1, (int)this.Height);
+            var levels = Math.Max(1, (int)this.Mipmaps);
+
+            for (var level = 0; level < levels; level++)
+            {
+                payload += compression switch
+                {
+                    TextureCompressionType.TEXCOMP_DXTC1 =>
+                        Math.Max(1, (width + 3) / 4) * Math.Max(1, (height + 3) / 4) * 8,
+                    TextureCompressionType.TEXCOMP_DXTC3 or TextureCompressionType.TEXCOMP_DXTC5 =>
+                        Math.Max(1, (width + 3) / 4) * Math.Max(1, (height + 3) / 4) * 16,
+                    TextureCompressionType.TEXCOMP_4BIT or
+                    TextureCompressionType.TEXCOMP_4BIT_IA8 or
+                    TextureCompressionType.TEXCOMP_4BIT_RGB16_A8 or
+                    TextureCompressionType.TEXCOMP_4BIT_RGB24_A8 =>
+                        (width * height + 1) / 2,
+                    TextureCompressionType.TEXCOMP_8BIT or
+                    TextureCompressionType.TEXCOMP_8BIT_16 or
+                    TextureCompressionType.TEXCOMP_8BIT_64 or
+                    TextureCompressionType.TEXCOMP_8BIT_IA8 or
+                    TextureCompressionType.TEXCOMP_8BIT_RGB16_A8 or
+                    TextureCompressionType.TEXCOMP_8BIT_RGB24_A8 =>
+                        width * height,
+                    TextureCompressionType.TEXCOMP_16BIT or
+                    TextureCompressionType.TEXCOMP_16BIT_1555 or
+                    TextureCompressionType.TEXCOMP_16BIT_3555 or
+                    TextureCompressionType.TEXCOMP_16BIT_565 =>
+                        width * height * 2,
+                    TextureCompressionType.TEXCOMP_24BIT =>
+                        width * height * 3,
+                    _ =>
+                        width * height * 4,
+                };
+
+                width = Math.Max(1, width >> 1);
+                height = Math.Max(1, height >> 1);
+            }
+
+            return payload;
+        }
+
+        private static void WritePixelFormat(BinaryWriter bw, TextureCompressionType compression)
+        {
+            var format = new DDS_PIXELFORMAT();
+
+            switch (compression)
+            {
+                case TextureCompressionType.TEXCOMP_DXTC1:
+                    DDS_CONST.DDSPF_DXT1(format);
+                    break;
+                case TextureCompressionType.TEXCOMP_DXTC3:
+                    DDS_CONST.DDSPF_DXT3(format);
+                    break;
+                case TextureCompressionType.TEXCOMP_DXTC5:
+                    DDS_CONST.DDSPF_DXT5(format);
+                    break;
+                case TextureCompressionType.TEXCOMP_4BIT:
+                    DDS_CONST.DDSPF_PAL4(format);
+                    break;
+                case TextureCompressionType.TEXCOMP_4BIT_IA8:
+                case TextureCompressionType.TEXCOMP_4BIT_RGB16_A8:
+                case TextureCompressionType.TEXCOMP_4BIT_RGB24_A8:
+                    DDS_CONST.DDSPF_PAL4A(format);
+                    break;
+                case TextureCompressionType.TEXCOMP_8BIT:
+                case TextureCompressionType.TEXCOMP_8BIT_16:
+                case TextureCompressionType.TEXCOMP_8BIT_64:
+                    DDS_CONST.DDSPF_PAL8(format);
+                    break;
+                case TextureCompressionType.TEXCOMP_8BIT_IA8:
+                case TextureCompressionType.TEXCOMP_8BIT_RGB16_A8:
+                case TextureCompressionType.TEXCOMP_8BIT_RGB24_A8:
+                    DDS_CONST.DDSPF_PAL8A(format);
+                    break;
+                default:
+                    DDS_CONST.DDSPF_A8R8G8B8(format);
+                    break;
+            }
+
+            bw.Write(format.dwSize);
+            bw.Write(format.dwFlags);
+            bw.Write(format.dwFourCC);
+            bw.Write(format.dwRGBBitCount);
+            bw.Write(format.dwRBitMask);
+            bw.Write(format.dwGBitMask);
+            bw.Write(format.dwBBitMask);
+            bw.Write(format.dwABitMask);
+        }
 
         #endregion
     }

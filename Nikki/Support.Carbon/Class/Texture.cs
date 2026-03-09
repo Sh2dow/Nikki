@@ -421,11 +421,14 @@ namespace Nikki.Support.Carbon.Class
         /// <param name="bw"><see cref="BinaryWriter"/> to write data with.</param>
         public override void Serialize(BinaryWriter bw)
         {
-            byte[] array;
-            var datalist = new List<byte[]>();
-
             var size = this.DataLength >> 15;
             var modulo = this.DataLength % 0x8000;
+            var start = bw.BaseStream.Position;
+            var sum = 0;
+
+            var header = new SerializationHeader(0, this.GameINT, "TEXTURE");
+            header.Write(bw);
+            bw.Write(0);
 
             using (var ms = new MemoryStream(0x100 + this._collection_name.Length))
             using (var writer = new BinaryWriter(ms))
@@ -465,8 +468,10 @@ namespace Nikki.Support.Carbon.Class
                 writer.WriteBytes(0, 0x20); // write padding for better compression
                 writer.Write(modulo == 0 ? size : size + 1);
 
-                array = Interop.Compress(ms.ToArray(), LZCompressionType.RAWW);
-                datalist.Add(array);
+                var array = Interop.Compress(ms.ToArray(), LZCompressionType.RAWW);
+                bw.Write(array.Length);
+                bw.Write(array);
+                sum += array.Length + 4;
 
             }
 
@@ -481,24 +486,19 @@ namespace Nikki.Support.Carbon.Class
 
                 var temp = new byte[total];
                 Array.Copy(data, loop << 15, temp, 0, total);
-                array = Interop.Compress(temp, LZCompressionType.RAWW);
-                datalist.Add(array);
+                var array = Interop.Compress(temp, LZCompressionType.RAWW);
+                bw.Write(array.Length);
+                bw.Write(array);
+                sum += array.Length + 4;
 
             }
 
-            var sum = datalist.Aggregate(0, (res, arr) => res += arr.Length);
-            sum += datalist.Count << 2;
-            var header = new SerializationHeader(sum, this.GameINT, "TEXTURE");
+            var end = bw.BaseStream.Position;
+            bw.BaseStream.Position = start;
+            header = new SerializationHeader(sum, this.GameINT, "TEXTURE");
             header.Write(bw);
             bw.Write(sum);
-
-            foreach (var arr in datalist)
-            {
-
-                bw.Write(arr.Length);
-                bw.Write(arr);
-
-            }
+            bw.BaseStream.Position = end;
         }
 
         /// <summary>
